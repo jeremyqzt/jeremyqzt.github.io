@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/site.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+    <link rel="stylesheet" href="projects/maze/css/grid.css">
+    <link rel="stylesheet" href="projects/reversi/css/reversi.css">
+
+    <title>Projects</title>
+  </head>
+  <body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
+  <div class="container">
+    <a class="navbar-brand">Jeremy's Personal Site</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">About Me
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Past Projects<span class="sr-only">(current)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="masthead" style="background-image: url('https://source.unsplash.com/alS7ewQ41M8/1920x1080');">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h1 class="font-weight-light">Past Projects</h1>
+        <p class="lead">This is where I keep some of my past projects!</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <div>
+      <div class = "row">
+      <div class="col-12 text-center">
+        <h2 class="font-weight-light">Maze Generation and Search (Interactive)</h2>
+        <p class="font-weight-light">This is a algorithm demo applied to a grid. The original code can be found on <a href="https://github.com/jeremyqzt/jsMaze">Github</a>! <br/> Click on any grid to mark it as an obstacle, double-left click to set the start, double-right click to set the End. <br/> Select any algorithm to see it in action!</p>
+      </div>
+      </div>
+      <div class = "row">
+        <div class="col-lg-7">
+          <div id="grid" oncontextmenu="return false;"> </div>
+        </div>
+        <div class = "row col-lg-5 h-100">
+          <div class="h-25 bottomMargin">
+            <h5 class="font-weight-light">Maze Generation</h5>
+            <p class="font-weight-light noMargin">Generate a maze using Prim's random algorithm.</p> <br/>
+            <button onClick = "makeMaze()" class="btn btn-success">Generate Maze</button>
+          </div>
+          <div class="h-25 bottomMargin">
+            <h5 class="font-weight-light">Search Algorithms</h5>
+            <p class="font-weight-light noMargin">Find Start->End using DFS or BFS.</p> <br/>
+            <button onClick = "solveMazeDfs()" class="btn btn-primary">Search DFS</button>
+            <button onClick = "solveMazeBfs()" class="btn btn-primary">Search BFS</button>
+          </div>
+          <div class="h-25 bottomMargin">
+            <h5 class="font-weight-light">Shortest Path Algorithms</h5>
+            <p class="font-weight-light noMargin">Find Start->End using Dijkstra or Bellman-Ford.</p> <br/>
+            <button onClick = "SPFDijkstra()" class="btn btn-info">Solve Dijkstra</button>
+            <button onClick = "SPFBF()" class="btn btn-info">Solve BellmanFord</button> <br/>
+          </div>
+          <div class="h-25">
+            <h5 class="font-weight-light noMargin">Clear Maze</h5>
+            <p class="font-weight-light noMargin">Reset the maze.</p> <br/>
+            <button onClick = "cleanAll()" class="btn btn-danger">Clean All</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="projects/maze/js/grid.js"></script>
+    <script src="projects/maze/js/gridNode.js"></script>
+    <script src="projects/maze/js/algos.js"></script>
+    <script>
+
+      var grid = new Grid("grid", 20);
+      var generationAlgo = new mazeMaker(this.grid);
+
+      makeMaze = () => {
+        generationAlgo.makeMaze();
+      }
+
+      solveMazeDfs = () => {
+        DFSearch(grid, grid.getStart(), grid.getEnd(), true);
+      }
+
+      solveMazeBfs = () => {
+        BFSearch(grid, grid.getStart(), grid.getEnd());
+      }
+
+      SPFDijkstra = () => {
+        Dijkstra(grid, grid.getStart(), grid.getEnd());
+      }
+
+      SPFBF = () => {
+        BellmanFord(grid, grid.getStart(), grid.getEnd());
+      }
+
+
+      cleanAll = () => {
+        grid.cleanAll();
+      }
+    </script>
+</section>
+
+<div class="parallax" style="background-image: url('https://source.unsplash.com/A-UYHN_zT9o/1920x1080');"></div>
+<!-- Page Content -->
+<!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <div>
+      <div class = "row">
+      <div class="col-12 text-center">
+        <h2 class="font-weight-light">Reversi With Min-Max AI (Interactive)</h2>
+        <p class="font-weight-light">This is Reversi game with 3 AI difficulties! Source code is available on <a href="https://github.com/jeremyqzt/jsReversi">Github</a>! <br/> The AIs will try to win with the following condition!</p> <br/>
+        <p><b>Easy</b> - Random Available Move</p> <br/>
+        <p><b>Medium</b> - Best Available Move</p> <br/>
+        <p><b>Hard</b> - Best Available Move, Looking Ahead 3 Turns</p> <br/>
+
+        <p class="font-weight-light"> The player always goes first, the AI difficulty is stateless and can be changed on-the-fly when its the player's turn!</p>
+      </div>
+      </div>
+      <div class = "row align-top">
+        <div class="col-lg-7 col-sm-12">
+          <div id="gameBoardDiv"> </div>
+        </div>
+        <div class = "col-1">
+        </div>
+        <div class = "col-lg-4 col-sm-12 align-top">
+          <div id="gameInfoDiv"> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="projects/reversi/js/dumbAIs.js"></script>
+  <script src="projects/reversi/js/minMaxAI.js"></script>
+  <script src="projects/reversi/js/reversi.js"></script>
+  <script>
+  function func1() {
+               //Game Div      Info Div      initialPieces   Init Move
+    let game = new Reversi("gameBoardDiv", "gameInfoDiv", null,           null);
+  }
+  window.onload=func1;
+
+  </script>
+</section>
+
+
+<div class="parallax" style="background-image: url('https://source.unsplash.com/O1Uv_8dSLrw/1920x1080');"></div>
+<!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <div>
+      <div class = "row">
+      <div class="col-12 text-center">
+        <h2 class="font-weight-light">MandelBulb Video Generation (Video Demo)</h2>
+        <p class="font-weight-light">This is an university project, the goal is to take a ray-traced MandelBulb and then modify the code to allow concurrent processing and to add an algorithm to traverse the exterior and generate a video. <br/>
+        OpenACC and OpenMP were used to parallelize the work load, the maximum speed up is 140X on a 4K video!<br/>
+        The original code can be found on <a href="https://github.com/challett/mandelBulb">Github</a>! <br/></p>
+      </div>
+      </div>
+      <div class = "row" >
+        <iframe class="col-12" height="600" src="https://www.youtube.com/embed/qQfTlMQdROw"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Site footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-6 col-xs-12">
+            <h6 class="copyright-text">Jeremy Qian</h6><br/>
+
+          </div>
+
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <ul class="social-icons">
+
+              <li><a class="email" target="_blank" href="mailto:jq357@hotmail.com"><i class="fa fa-envelope"></i></a></li>
+              <li><a class="git" target="_blank" href="https://github.com/jeremyqzt"><i class="fa fa-github"></i></a></li>
+              <li><a class="linkedin" target="_blank" href="https://www.linkedin.com/in/jeremy-qian/"><i class="fa fa-linkedin"></i></a></li>
+              <li><a class="facebook" target="_blank" href="https://www.facebook.com/jeremy.qian77"><i class="fa fa-facebook"></i></a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+  </footer>
+  </body>
+</html>
