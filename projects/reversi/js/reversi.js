@@ -20,7 +20,8 @@ class StatsManager {
 		this.turnReversiPiece.setType(winner);
 		var winnerText = "";
 		if (winner != null) {
-			winnerText = (winner == PieceEnum.white) ? "White": "Black" + " Has Won the Game!";
+			winnerText = (winner == PieceEnum.white) ? "White": "Black" 
+			winnerText = winnerText + " Has Won the Game!";
 			this.curTurnTextHeader.innerHTML = winnerText;
 		} else {
 			winnerText = "No one has won, its a Tie!"

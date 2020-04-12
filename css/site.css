@@ -186,3 +186,14 @@
 i, p, h6{
   display: inline-block;
 }
+
+.card-img-top {
+    width: 100%;
+    height: 120px;
+    object-fit: git;
+}
+
+.my-flex-card > div > div.card {
+    height: calc(100% - 15px);
+    margin-bottom: 15px;
+}
