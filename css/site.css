@@ -174,8 +174,8 @@
   /* Set a specific height */
   height: 600px;
   /* Add the blur effect */
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
+  #filter: blur(3px);
+  #-webkit-filter: blur(3px);
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
