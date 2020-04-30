@@ -76,6 +76,11 @@ class GoL {
 	}
 
 	async evolveContinous(){
+		this.lifeGrid.readGrid(this.GID);
+		if (this.allDead()) {
+			alert("I require a initial population to start a simulation!");
+			return;
+		}
 		var count = 0;
 		this.stop = false;
 		while (1) {
