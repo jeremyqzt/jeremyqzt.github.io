@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
     <link rel="stylesheet" href="projects/maze/css/grid.css">
     <link rel="stylesheet" href="projects/reversi/css/reversi.css">
+    <link rel="stylesheet" href="projects/GoL/css/GoL.css">
 
     <title>Projects</title>
   </head>
@@ -164,6 +165,70 @@
   </div>
 </div>
 <div class="parallax" style="background-image: url('https://source.unsplash.com/A-UYHN_zT9o/1920x1080');"></div>
+<!-- Page Content -->
+<!-- Page Content -->
+<section class="py-5">
+	<div class="container">
+		<div class="col-12 text-center">
+			<h2 class="font-weight-light">Game of Life (Interactive)</h2>
+			<p class="font-weight-light">This is a JavaScript implementation of Conway's Game of Life. Original code can be found on 
+			<a href="https://github.com/jeremyqzt/JSGameOfLife">Github</a>! The rules are as the following.<br/>
+			<p><b>Underpopulation</b> - Cell is removed if there are less than 2 neighbours.</p> <br/>
+			<p><b>Overpopulation</b> - Cell is removed if there are more than 3 neighbours.</p> <br/>
+			<p><b>Next Generation</b> - Cell survives if there are 2 or 3 neighbours. </p> <br/>
+			<p><b>Next Generation</b> - Empty cells come alive if there are exactly 3 neighbours. </p> <br/>
+			<p>Click on any cell to seed the grid with population. Start the simulation with controls below.</p> <br/> <br/>
+
+		</div>
+		<div class = "row">
+			<div class="col-lg-6" id="lifeGrid"></div>
+			<div class = "row col-lg-1 h-100"></div>
+			<div class = "row col-lg-5 h-100">
+				<div class="h-25 bottomMargin">
+				<h5 class="font-weight-light">Simulation Start</h5>
+				<p class="font-weight-light noMargin">Start the Game of Life simulation!</p> <br/>
+				<button onClick="startNow()" type="button" class="btn btn-success">Start Simulation</button>
+			</div> <br/>
+			<div class="h-25 bottomMargin">
+				<h5 class="font-weight-light">Simulation Pause</h5>
+				<p class="font-weight-light noMargin">Pieces on the board are left intact by pauses.</p> <br/>
+				<button onClick="stopNow()" type="button" class="btn btn-warning">Pause Simulation</button>
+			</div> <br/>
+				<div class="h-25 bottomMargin">
+				<h5 class="font-weight-light">Population Generation</h5>
+				<p class="font-weight-light noMargin">Click to seed the grid with a random population.</p> <br/>
+				<button onClick="random()" type="button" class="btn btn-primary">Create Random Population</button>
+			</div>  <br/>
+			<div class="h-25">
+				<h5 class="font-weight-light noMargin">Clear Grid</h5>
+				<p class="font-weight-light noMargin">Reset the Grid. Clears off everything!</p> <br/>
+				<button onClick="wipe()" type="button" class="btn btn-danger">Clean All</button>
+				</div>
+			</div>
+		</div>
+  </div>
+
+<script src="projects/GoL/js/GoL.js"></script>
+<script>
+	var t = new GoL("#lifeGrid");
+
+	function startNow() {
+		t.evolveContinous();
+	}
+	function random() {
+		t.randomPop();
+	}
+	function wipe() {
+		t.removeAllPop();
+	}
+	function stopNow() {
+		t.stopEvolving();
+	}
+
+</script>
+</section>
+
+<div class="parallax" style="background-image: url('https://source.unsplash.com/lZbRV_a4Yxg/1920x1080');"></div>
 <!-- Page Content -->
 <!-- Page Content -->
 <section class="py-5">
