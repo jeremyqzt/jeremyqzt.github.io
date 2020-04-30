@@ -82,7 +82,6 @@ class GoL {
 			this.evolveSingle();
 			await new Promise(r => setTimeout(r, 1000));
 			if (this.stop || this.allDead()){
-				alert("Simulation Complete!");
 				break;
 			}
 		}
