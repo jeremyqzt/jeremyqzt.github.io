@@ -1,4 +1,4 @@
-var singleCol = "<div id='space' class='col-sm-1 bubbleBorder text-center'></div>";
+var singleCol = "<div id='space' class='col-1 bubbleBorder text-center'></div>";
 var singleRow = "<div class = 'row'>";
 var completeRow = singleRow + singleCol.repeat(12) + "</div>";
 var possibleEmojis = ["😃", "😄", "🙂", "😉", "😛", "🤪", "😔", "😪", "😎", "😠"];
