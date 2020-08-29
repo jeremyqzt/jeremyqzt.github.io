@@ -124,10 +124,15 @@
         $('#myInput').trigger('focus')
       })
 
-      var grid = new Grid("grid", 20);
+      var grid = new Grid("grid", 15);
       var generationAlgo = new mazeMaker(this.grid);
 
       makeMaze = () => {
+        if (grid.actionInProgress()) {
+          alert("The Grid is currently occupied, wait for a bit and try again.");
+          return;
+        }
+
         generationAlgo.makeMaze();
       }
 
@@ -144,11 +149,16 @@
       }
 
       SPFBF = () => {
+        $('#myModal').modal('toggle');
         BellmanFord(grid, grid.getStart(), grid.getEnd());
       }
 
 
       cleanAll = () => {
+        if (grid.actionInProgress()) {
+          alert("The Grid is currently occupied, wait for a bit and try again.");
+          return;
+        }
         grid.cleanAll();
       }
     </script>
@@ -163,13 +173,15 @@
         </button>
       </div>
       <div class="modal-body">
-       This algorithm will take a long time to run. <br/> <br/>
-        Bellman-Ford has a complexity of O(V*E). <br/> <br/>
-        All other algorithms in this section are O(V).
+       This algorithm normally take a long time to visualize... <br/> <br/>
+       Bellman-Ford has a complexity of O(V*E). <br/> <br/>
+       All other algorithms in this section are O(V). <br/> <br/>
+      
+       <strong>For brevity</strong> - only every 250th relaxation cycle is rendered
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Don't Run</button>
-        <button type="button" onClick = "SPFBF()" class="btn btn-primary">Run The Algorithm Anyways</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" onClick = "SPFBF()" class="btn btn-primary">Okay, Run The Algorithm!</button>
       </div>
     </div>
   </div>

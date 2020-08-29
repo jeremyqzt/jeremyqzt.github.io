@@ -137,7 +137,9 @@ async function BellmanFord(grid, start, end) {
 				minPrev = null;
 				for (var z = 0; z < toProcess.length; z++) {
 					toProcess[z].setColor("LightCoral");
-					await new Promise(r => setTimeout(r, 1));
+					if (i % 250 === 0){
+						await new Promise(r => setTimeout(r, 1));
+					}
 					if (toProcess[z].getAttrib(weightKey) != Infinity) {
 						if (toProcess[z].getAttrib(weightKey) < cycleMin) {
 							cycleMin = toProcess[z].getAttrib(weightKey);
@@ -153,11 +155,8 @@ async function BellmanFord(grid, start, end) {
 				grid.grid[j][t].setColor("white");
 			}
 		}
-		await new Promise(r => setTimeout(r, 1));
-		console.log("Computing");
 	}
 
-	console.log(grid.grid[0][1]);
 	await drawPath(end, start);
 
 	this.grid.setAction(false);
