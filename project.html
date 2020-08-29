@@ -28,10 +28,9 @@
   </head>
   <body>
 <!-- Navigation -->
-<!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow fixed-top">
   <div class="container">
-    <a class="navbar-brand">Jeremy's Personal Site</a>
+    <a href="index.html" class="navbar-brand">Jeremy's Personal Site</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -241,50 +240,6 @@
 
 <div class="parallax" style="background-image: url('https://source.unsplash.com/lZbRV_a4Yxg/1920x1080');"></div>
 <!-- Page Content -->
-<!-- Page Content -->
-<section class="py-5">
-  <div class="container">
-    <div>
-      <div class = "row">
-      <div class="col-12 text-center">
-        <h2 class="font-weight-light">Reversi With Min-Max AI (Interactive)</h2>
-        <p class="font-weight-light">This is Reversi game with 3 AI difficulties! Source code is available on <a href="https://github.com/jeremyqzt/jsReversi">Github</a>! <br/> 
-          This code was used as the starter client side code on one of my other projects <a href="https://playreversi.net/">Online Multiplayer Reversi</a>!
-          <br/> The AIs will try to win with the following condition!</p> <br/>
-        <p><b>Easy</b> - Random Available Move</p> <br/>
-        <p><b>Medium</b> - Best Available Move</p> <br/>
-        <p><b>Hard</b> - Best Available Move, Looking Ahead 3 Turns</p> <br/>
-
-        <p class="font-weight-light"> The player always goes first, the AI difficulty is stateless and can be changed on-the-fly when its the player's turn!</p>
-      </div>
-      </div>
-      <div class = "row align-top">
-        <div class="col-lg-7 col-sm-12">
-          <div id="gameBoardDiv"> </div>
-        </div>
-        <div class = "col-1">
-        </div>
-        <div class = "col-lg-4 col-sm-12 align-top">
-          <div id="gameInfoDiv"> </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="projects/reversi/js/dumbAIs.js"></script>
-  <script src="projects/reversi/js/minMaxAI.js"></script>
-  <script src="projects/reversi/js/reversi.js"></script>
-  <script>
-  function func1() {
-               //Game Div      Info Div      initialPieces   Init Move
-    let game = new Reversi("gameBoardDiv", "gameInfoDiv", null,           null);
-  }
-  window.onload=func1;
-
-  </script>
-</section>
-
-
-<div class="parallax" style="background-image: url('https://source.unsplash.com/O1Uv_8dSLrw/1920x1080');"></div>
 <!-- Page Content -->
 <section class="py-5">
   <div class="container">
