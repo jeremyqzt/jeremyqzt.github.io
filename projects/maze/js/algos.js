@@ -222,7 +222,7 @@ async function Dijkstra(grid, start, end){
 async function drawPath(end, first){
 	var cur = end;
 	if (cur.getAttrib(previousKey) == null) {
-		alert("No Path Found");
+		missingPath();
 		return
 	}
 	while (!cur.isStart) {
