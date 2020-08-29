@@ -120,7 +120,7 @@
     <script src="projects/maze/js/algos.js"></script>
     <script>
 
-      var grid = new Grid("grid", 20);
+      var grid = new Grid("grid", 17);
       var generationAlgo = new mazeMaker(this.grid);
 
       gridOccupiedModal = () =>{
@@ -264,6 +264,11 @@
 			<div class="col-lg-6" id="lifeGrid"></div>
 			<div class = "row col-lg-1 h-100"></div>
 			<div class = "row col-lg-5 h-100">
+        <div class="h-25 bottomMargin">
+          <h5 class="font-weight-light">Population Generation</h5>
+          <p class="font-weight-light noMargin">Click to seed the grid with a random population.</p> <br/>
+          <button onClick="random()" type="button" class="btn btn-primary">Create Random Population</button>
+        </div>  <br/>
 				<div class="h-25 bottomMargin">
 				<h5 class="font-weight-light">Simulation Start</h5>
 				<p class="font-weight-light noMargin">Start the Game of Life simulation!</p> <br/>
@@ -274,11 +279,6 @@
 				<p class="font-weight-light noMargin">Pieces on the board are left intact by pauses.</p> <br/>
 				<button onClick="stopNow()" type="button" class="btn btn-warning">Pause Simulation</button>
 			</div> <br/>
-				<div class="h-25 bottomMargin">
-				<h5 class="font-weight-light">Population Generation</h5>
-				<p class="font-weight-light noMargin">Click to seed the grid with a random population.</p> <br/>
-				<button onClick="random()" type="button" class="btn btn-primary">Create Random Population</button>
-			</div>  <br/>
 			<div class="h-25">
 				<h5 class="font-weight-light noMargin">Clear Grid</h5>
 				<p class="font-weight-light noMargin">Reset the Grid. Clears off everything!</p> <br/>
@@ -287,11 +287,30 @@
 			</div>
 		</div>
   </div>
-
+  <div class="modal fade" id="initPop" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Missing Population</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <strong>No Population Inputed</strong> - Click on each grid space to populate or generate a random population.<br/> <br/> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <script src="projects/GoL/js/GoL.js"></script>
 <script>
 	var t = new GoL("#lifeGrid");
-
+  genPopModal = () => {
+        $('#initPop').modal('toggle');
+  }
 	function startNow() {
 		t.evolveContinous();
 	}
