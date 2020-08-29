@@ -5,7 +5,7 @@ var weightKey = "w";
 function okayToRun(arr) {
 	for (var i = 0; i < arr.length; i++) {
 		if (arr[i] == null) {
-			alert("Start or Stop Flags Missing! \nDouble left-click to mark start. \nDouble right-click to mark end!");
+			missingFlags();
 			return false;
 		}
 	}
@@ -15,7 +15,7 @@ function okayToRun(arr) {
 async function DFSearch(grid, cur, end, first){
 	if (first){
 		if (this.grid.actionInProgress()) {
-			alert("DFS Cannot Run, the Grid is currently occupied");
+			gridOccupiedModal();
 			return;
 		}
 
@@ -59,7 +59,7 @@ async function DFSearch(grid, cur, end, first){
 
 async function BFSearch(grid, start, end){
 	if (this.grid.actionInProgress()) {
-		alert("BFS Cannot Run, the Grid is currently occupied");
+		gridOccupiedModal();
 		return;
 	}
 	if (!okayToRun([grid, start, end])) {
@@ -107,7 +107,7 @@ async function BFSearch(grid, start, end){
 
 async function BellmanFord(grid, start, end) {
 	if (this.grid.actionInProgress()) {
-		alert("Bellman-Ford Cannot Run, the Grid is currently occupied");
+		gridOccupiedModal();
 		return;
 	}
 	if (!okayToRun([grid, start, end])) {
@@ -165,7 +165,7 @@ async function BellmanFord(grid, start, end) {
 
 async function Dijkstra(grid, start, end){
 	if (this.grid.actionInProgress()) {
-		alert("Dijkstra Cannot Run, the Grid is currently occupied");
+		gridOccupiedModal();
 		return;
 	}
 	if (!okayToRun([grid, start, end])) {

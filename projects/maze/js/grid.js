@@ -61,11 +61,6 @@ class mazeMaker{
 	}
 
 	async primRandomAlgo(individualHorizontalCount, individualVerticalCount) {
-		if (this.grid.actionInProgress()) {
-			alert("Something is occupying the grid right now");
-			return;
-		}
-
 		this.grid.cleanAll();
 
 		this.grid.setAction(true);
@@ -105,12 +100,8 @@ class mazeMaker{
 			toProcess.splice(idx, 1);
 
 			await new Promise(r => setTimeout(r, 1));
-			//this.count++;
-			//if (this.count > 3)
-			//	break;
 		}
 		if (this.grid.heightIsEven()){
-			console.log("Handling Vertical Even");
 			for (var i = 0; i< individualHorizontalCount; i++){
 				if (!this.grid.isObs(individualVerticalCount - 2, i)) {
 					this.grid.setPass(individualVerticalCount -1 , i);
@@ -118,7 +109,6 @@ class mazeMaker{
 			}
 		}
 		if (this.grid.widthIsEven()){
-			console.log("Handling Horizontal Even");
 			for (var i = 0; i< individualVerticalCount; i++){
 				if (!this.grid.isObs(i, individualHorizontalCount - 2)) {
 					this.grid.setPass(i, individualHorizontalCount - 1);
@@ -200,6 +190,11 @@ class Grid{
 	}
 
 	cleanAll(){
+		if (this.actionInProgress()) {
+			gridOccupiedModal();
+			return;
+		}
+
 		for (var i = 0; i < this.individualVerticalCount; i++) {
 			for (var j = 0; j < this.individualHorizontalCount; j++) {
 				this.grid[i][j].setAsPassage();

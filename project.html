@@ -120,19 +120,22 @@
     <script src="projects/maze/js/algos.js"></script>
     <script>
 
-      $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').trigger('focus')
-      })
-
       var grid = new Grid("grid", 20);
       var generationAlgo = new mazeMaker(this.grid);
 
-      makeMaze = () => {
-        if (grid.actionInProgress()) {
-          alert("The Grid is currently occupied, wait for a bit and try again.");
-          return;
-        }
+      gridOccupiedModal = () =>{
+        $('#occupiedModal').modal('toggle');
+      }
 
+      missingFlags = () =>{
+        $('#missingModal').modal('toggle');
+      }
+
+      missingFlags = () => {
+        $('#noPath').modal('toggle');
+      }
+
+      makeMaze = () => {
         generationAlgo.makeMaze();
       }
 
@@ -153,12 +156,7 @@
         BellmanFord(grid, grid.getStart(), grid.getEnd());
       }
 
-
       cleanAll = () => {
-        if (grid.actionInProgress()) {
-          alert("The Grid is currently occupied, wait for a bit and try again.");
-          return;
-        }
         grid.cleanAll();
       }
     </script>
@@ -177,7 +175,7 @@
        Bellman-Ford has a complexity of O(V*E). <br/> <br/>
        All other algorithms in this section are O(V). <br/> <br/>
       
-       <strong>For brevity</strong> - only every 250th relaxation cycle is rendered
+       <strong>For brevity</strong> - only every 250th relaxation cycle is rendered.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -191,7 +189,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Board is already in use</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Board Busy</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -206,6 +204,45 @@
   </div>
 </div>
 
+<div class="modal fade" id="missingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Missing Start-Stop</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       For the algorithm to run, a start and a stop flag must be placed. <br/> <br/> 
+       <strong>Double Left-Click</strong> - To mark the starting position <br/> <br/> 
+       <strong>Double Right-Click</strong> -To mark the stopping position   
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="noPath" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Missing Start-Stop</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <strong>No Path Available</strong> - Edit the obstacles by clicking and dragging the mouse.<br/> <br/> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Okay</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="parallax" style="background-image: url('https://source.unsplash.com/A-UYHN_zT9o/1920x1080');"></div>
 <!-- Page Content -->
