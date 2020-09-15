@@ -166,8 +166,8 @@ class Grid{
 			h1 = Math.floor(Math.random() * this.individualHorizontalCount);
 		}
 
-		this.informStart(v0, h0);
-		this.informEnd(v1, h1);
+		this.informStart(v0, h0, true);
+		this.informEnd(v1, h1, true);
 	}
 
 	setAction(val) {
@@ -439,20 +439,34 @@ class Grid{
 		}
 	}
 
-	informStart(vert, hor) {
+	informStart(vert, hor, force) {
+		if (this.actionInProgress()  && force !== true) {
+			gridOccupiedModal();
+			return false;
+		}
+
 		if (this.startNode != null) {
 			this.startNode.removeStartEnd();
 		}
 		this.grid[vert][hor].setAsStart();
 		this.startNode = this.grid[vert][hor];
+
+		return true;
 	}
 
-	informEnd(vert, hor) {
+	informEnd(vert, hor, force) {
+		if (this.actionInProgress() && force !== true) {
+			gridOccupiedModal();
+			return false;
+		}
+
 		if (this.endNode != null) {
 			this.endNode.removeStartEnd();
 		}
 		this.grid[vert][hor].setAsEnd();
 		this.endNode = this.grid[vert][hor];
+
+		return true;
 	}
 
 }
@@ -495,6 +509,10 @@ class GridNode{
 	}
 	
 	evalPassObs(){
+		if (this.parentEl.actionInProgress()){
+			return;
+		}
+
 		if (this.isObs) {
 			this.setAsPassage();
 		} else {
@@ -503,7 +521,6 @@ class GridNode{
 	}
 
 	clicked(evt) {
-		console.log("Clicked Vertical: " + this.vert + " Horizontal: " + this.hor);
 		this.evalPassObs();
 	}
 
@@ -548,14 +565,18 @@ class GridNode{
 
 	setAsEndNode(evt) {
 		if (evt.detail === 2 && evt.which === 3) { 
-			this.setAsEnd();
-			this.parentEl.informEnd(this.vert, this.hor);
+			if (this.parentEl.informEnd(this.vert, this.hor, false)){
+				this.setAsEnd();
+			}
+			
 		}
 	}
 
 	setAsStartNode(evt) {
-		this.setAsStart();
-		this.parentEl.informStart(this.vert, this.hor);
+		if (this.parentEl.informStart(this.vert, this.hor, false)){
+			this.setAsStart();
+		}
+		
 	}
 
 	removeStartEnd(){
