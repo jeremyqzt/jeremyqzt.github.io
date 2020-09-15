@@ -593,11 +593,13 @@ class GridNode{
 
 	setAsStart() {
 		this.node.style.backgroundImage = "url('projects/maze/img/startFlag.PNG')";
+		this.setAsPassage();
 		this.isStart= true;
 	}
 
 	setAsEnd() {
 		this.node.style.backgroundImage = "url('projects/maze/img/endFlag.PNG')";
+		this.setAsPassage();
 		this.isEnd= true;
 	}
 
