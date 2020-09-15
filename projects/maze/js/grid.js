@@ -518,6 +518,9 @@ class GridNode{
 		} else {
 			this.setAsObs();
 		}
+
+		this.parentEl.cleanAllPass();
+		this.parentEl.clearAllAttrib();
 	}
 
 	clicked(evt) {
@@ -567,6 +570,8 @@ class GridNode{
 		if (evt.detail === 2 && evt.which === 3) { 
 			if (this.parentEl.informEnd(this.vert, this.hor, false)){
 				this.setAsEnd();
+				this.parentEl.cleanAllPass();
+				this.parentEl.clearAllAttrib();
 			}
 			
 		}
@@ -575,8 +580,9 @@ class GridNode{
 	setAsStartNode(evt) {
 		if (this.parentEl.informStart(this.vert, this.hor, false)){
 			this.setAsStart();
+			this.parentEl.cleanAllPass();
+			this.parentEl.clearAllAttrib();
 		}
-		
 	}
 
 	removeStartEnd(){

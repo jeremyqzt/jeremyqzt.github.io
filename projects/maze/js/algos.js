@@ -28,7 +28,6 @@ async function DFSearch(grid, cur, end, first){
 		grid.clearAllAttrib();
 		grid.setAllNodeAttrib(discoveredKey, false);
 	}
-	//console.log(end);
 
 	if (end.getAttrib(discoveredKey)){
 		return;
