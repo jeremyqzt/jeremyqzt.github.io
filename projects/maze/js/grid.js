@@ -61,6 +61,11 @@ class mazeMaker{
 	}
 
 	async primRandomAlgo(individualHorizontalCount, individualVerticalCount) {
+		if (this.grid.actionInProgress()) {
+			gridOccupiedModal();
+			return;
+		}
+
 		this.grid.cleanAll();
 
 		this.grid.setAction(true);
